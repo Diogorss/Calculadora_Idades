@@ -1,5 +1,5 @@
 import useAgeCalculator from "./useAgeCalculator";
-import "./Index.css";
+import "./index.css";
 
 function App() {
   const {
