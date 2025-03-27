@@ -1,5 +1,9 @@
 import useAgeCalculator from "./useAgeCalculator";
 import "./index.css";
+import BotaoEnviar from "./components/BotaoEnviar";
+import Resultado from "./components/Resultado";
+import InputField from "./components/InputField";
+import Header from "./components/Header";
 
 function App() {
   const {
@@ -16,61 +20,34 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Calculadora de Idades</h1>
+      <Header />
       <div className="form">
         <div className="input-group">
-          <div className="input-field">
-            <label>DAY</label>
-            <input
-              type="text"
-              placeholder="DD"
-              value={day}
-              onChange={handleDayChange}
-              pattern="[0-9]*"
-              inputMode="numeric"
-              maxLength="2"
-            />
-          </div>
-          <div className="input-field">
-            <label>MONTH</label>
-            <input
-              type="text"
-              placeholder="MM"
-              value={month}
-              onChange={handleMonthChange}
-              pattern="[0-9]*"
-              inputMode="numeric"
-              maxLength="2"
-            />
-          </div>
-          <div className="input-field">
-            <label>YEAR</label>
-            <input
-              type="text"
-              placeholder="YYYY"
-              value={year}
-              onChange={handleYearChange}
-              pattern="[0-9]*"
-              inputMode="numeric"
-              maxLength="4"
-            />
-          </div>
+          <InputField
+            label="DAY"
+            placeholder="DD"
+            value={day}
+            onChange={handleDayChange}
+            maxLength="2"
+          />
+          <InputField
+            label="MONTH"
+            placeholder="MM"
+            value={month}
+            onChange={handleMonthChange}
+            maxLength="2"
+          />
+          <InputField
+            label="YEAR"
+            placeholder="YYYY"
+            value={year}
+            onChange={handleYearChange}
+            maxLength="4"
+          />
         </div>
-        <button className="calculate-button" onClick={calculateAge}>
-          <span>↓</span>
-        </button>
+        <BotaoEnviar onClick={calculateAge} />
       </div>
-      <div className="result">
-        <p>
-          <span className="highlight">{age.years}</span> years
-        </p>
-        <p>
-          <span className="highlight">{age.months}</span> months
-        </p>
-        <p>
-          <span className="highlight">{age.days}</span> days
-        </p>
-      </div>
+      <Resultado age={age} />
     </div>
   );
 }
